@@ -4,7 +4,7 @@ const sliders = (slides, dir, prev, next) => {
 
     const items = document.querySelectorAll(slides);
 
-    function showSlides (n) {
+    function showSlides(n) {
         if (n > items.length) {
             slideIndex = 1;
         }
@@ -42,16 +42,16 @@ const sliders = (slides, dir, prev, next) => {
             items[slideIndex - 1].classList.remove('fadeInRight');
             items[slideIndex - 1].classList.add('fadeInLeft');
         });
-    } catch(e) {}
+    } catch (e) {}
 
     function activateAnimation() {
         if (dir === 'vertical') {
-            paused = setInterval(function() {
+            paused = setInterval(function () {
                 plusSlides(1);
                 items[slideIndex - 1].classList.add('fadeInDown');
-            }, 3000);
+            }, 5000);
         } else {
-            paused = setInterval(function() {
+            paused = setInterval(function () {
                 plusSlides(-1);
                 items[slideIndex - 1].classList.remove('fadeInRight');
                 items[slideIndex - 1].classList.add('fadeInLeft');

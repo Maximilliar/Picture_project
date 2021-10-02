@@ -1,15 +1,18 @@
 const modals = () => {
     let btnPressed = false;
 
-    function bindModal (triggerSelector, modalSelector, closeSelector, destroy = false) {
+    const giftImg = document.querySelector('.fixed-gift');
+    const pageUp = document.querySelector('.pageup');
+
+    function bindModal(triggerSelector, modalSelector, closeSelector, destroy = false) {
         const trigger = document.querySelectorAll(triggerSelector);
         const modal = document.querySelector(modalSelector);
         const close = document.querySelector(closeSelector);
         const windows = document.querySelectorAll('[data-modal]');
         const scroll = calcScroll();
-        
+
         trigger.forEach(item => {
-            item.addEventListener('click',  (e) => {
+            item.addEventListener('click', (e) => {
                 if (e.target) {
                     e.preventDefault();
                 }
@@ -28,6 +31,8 @@ const modals = () => {
                 modal.style.display = 'block';
                 document.body.style.overflow = 'hidden';
                 document.body.style.marginRight = `${scroll}px`;
+                giftImg.style.right = "3.5rem";
+                pageUp.style.display = 'none';
             });
         });
 
@@ -39,9 +44,12 @@ const modals = () => {
             modal.style.display = 'none';
             document.body.style.overflow = '';
             document.body.style.marginRight = `0px`;
+            giftImg.style.right = "2rem";
+            pageUp.style.display = '';
+
         });
 
-        modal.addEventListener('click', (e)=> {
+        modal.addEventListener('click', (e) => {
             if (e.target === modal) {
                 windows.forEach(item => {
                     item.style.display = 'none';
@@ -50,12 +58,14 @@ const modals = () => {
                 modal.style.display = 'none';
                 document.body.style.overflow = '';
                 document.body.style.marginRight = `0px`;
+                giftImg.style.right = "2rem";
+                pageUp.style.display = '';
             }
         });
     }
 
     function showModalByTime(selector, time) {
-        setTimeout(function(){
+        setTimeout(function () {
             let display;
 
             document.querySelectorAll('[data-modal]').forEach(item => {
@@ -95,11 +105,22 @@ const modals = () => {
         });
     }
 
+    function giftAnimation() {
+        giftImg.addEventListener('mouseenter', () => {
+            giftImg.classList.add('tada');
+        });
+
+        giftImg.addEventListener('mouseleave', () => {
+            giftImg.classList.remove('tada');
+        });
+    }
+
     bindModal('.button-design', '.popup-design', '.popup-design .popup-close');
     bindModal('.button-consultation', '.popup-consultation', '.popup-consultation .popup-close');
     bindModal('.fixed-gift', '.popup-gift', '.popup-gift .popup-close', true);
     openByScroll('.fixed-gift');
     showModalByTime('.popup-consultation', 60000);
+    giftAnimation();
 };
 
 export default modals;
