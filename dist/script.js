@@ -4634,6 +4634,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var drop = function drop() {
   var fileInputs = document.querySelectorAll('[name="upload"]');
+  var fileUpload = document.querySelector('.file_upload');
   ['dragenter', 'dragleave', 'dragover', 'drop'].forEach(function (eventName) {
     fileInputs.forEach(function (input) {
       input.addEventListener(eventName, preventDefaults, false);
@@ -4646,8 +4647,8 @@ var drop = function drop() {
   }
 
   function highlight(item) {
-    item.closest('.file_upload').style.border = "5px solid yellow";
-    item.closest('.file_upload').style.backgroundColor = "rgba(0,0,0, .7)";
+    item.closest('.file_upload').style.border = "5px dashed #c51abb";
+    item.closest('.file_upload').style.backgroundColor = "rgba(161,42,177, 0.3)";
   }
 
   function unhighlight(item) {

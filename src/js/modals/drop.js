@@ -1,5 +1,6 @@
 const drop = () => {
     const fileInputs = document.querySelectorAll('[name="upload"]');
+    const fileUpload = document.querySelector('.file_upload');
 
     ['dragenter', 'dragleave', 'dragover', 'drop'].forEach(eventName => {
         fileInputs.forEach(input => {
@@ -13,8 +14,8 @@ const drop = () => {
     }
 
     function highlight(item) {
-        item.closest('.file_upload').style.border = "5px solid yellow";
-        item.closest('.file_upload').style.backgroundColor = "rgba(0,0,0, .7)";
+        item.closest('.file_upload').style.border = "5px dashed #c51abb";
+        item.closest('.file_upload').style.backgroundColor = "rgba(161,42,177, 0.3)";
     }
 
     function unhighlight(item) {

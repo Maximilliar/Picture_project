@@ -668,14 +668,15 @@ h4 {
 
 .calc .file_upload>button {
   float: right;
-  width: 8em;
+  /* width: 8em; */
   /* example */
 
   height: 100%;
 }
 
 .calc .file_upload>div {
-  padding-left: 1em
+  padding-left: 3em;
+  padding-top: 15px;
     /* example */
   ;
 }
